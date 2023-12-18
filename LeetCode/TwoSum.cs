@@ -18,9 +18,6 @@ public class TwoSum
     /// <summary>
     /// My own solution from scratch with no tips.
     /// </summary>
-    /// <param name="nums"></param>
-    /// <param name="target"></param>
-    /// <returns></returns>
     private static int[] CalculateTwoSum(int[] nums, int target)
     {
         int indx1 = 0, indx2 = 0;
@@ -46,9 +43,6 @@ public class TwoSum
     /// <summary>
     /// With small tip
     /// </summary>
-    /// <param name="nums"></param>
-    /// <param name="target"></param>
-    /// <returns></returns>
     private static int[] CalculateTwoSumEnhanced(int[] nums, int target)
     {
         var dictionary = new Dictionary<int, int>();
