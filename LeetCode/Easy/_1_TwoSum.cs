@@ -1,9 +1,9 @@
-namespace LeetCode;
+namespace LeetCode.Easy;
 
 public class TwoSum
 {
     [Fact]
-    public void Test1()
+    public void TwoSumTest()
     {
         var testDataSeq = GetTestData();
 
