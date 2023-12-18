@@ -9,12 +9,18 @@ public class TwoSum
 
         foreach (var testData in testDataSeq)
         {
-            var calculated = CalculateTwoSum(testData.Nums, testData.Target);
+            var calculated = CalculateTwoSumEnhanced(testData.Nums, testData.Target);
 
             Assert.Equal(testData.Output, calculated);
         }
     }
 
+    /// <summary>
+    /// My own solution from scratch with no tips.
+    /// </summary>
+    /// <param name="nums"></param>
+    /// <param name="target"></param>
+    /// <returns></returns>
     private static int[] CalculateTwoSum(int[] nums, int target)
     {
         int indx1 = 0, indx2 = 0;
@@ -35,6 +41,30 @@ public class TwoSum
         }
         
         return new[] { indx1, indx2 };
+    }
+    
+    /// <summary>
+    /// With small tip
+    /// </summary>
+    /// <param name="nums"></param>
+    /// <param name="target"></param>
+    /// <returns></returns>
+    private static int[] CalculateTwoSumEnhanced(int[] nums, int target)
+    {
+        var dictionary = new Dictionary<int, int>();
+
+        for (int i = 0; (i < nums.Length); i++)
+        {
+            var diff = target - nums[i];
+
+            if (dictionary.TryGetValue(diff, out var value))
+                return new[] { value, i };
+
+            if (!dictionary.ContainsKey(nums[i]))
+                dictionary.Add(nums[i], i);
+        }
+
+        return Array.Empty<int>();
     }
 
     private static IEnumerable<(int[] Nums, int Target, int[] Output)> GetTestData()
