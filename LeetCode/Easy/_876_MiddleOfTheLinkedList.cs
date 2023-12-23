@@ -64,23 +64,7 @@ public class MiddleOfTheLinkedList
 
     private static IEnumerable<(ListNode Head, ListNode Middle)> GetTestData()
     {
-        yield return (GenerateNode(new[] { 1, 2, 3, 4, 5 }), GenerateNode(new[] { 3, 4, 5 }));
-        yield return (GenerateNode(new[] { 1, 2, 3, 4, 5, 6 }), GenerateNode(new[] { 4, 5, 6 }));
+        yield return (ListNode.GenerateNode(new[] { 1, 2, 3, 4, 5 }), ListNode.GenerateNode(new[] { 3, 4, 5 }));
+        yield return (ListNode.GenerateNode(new[] { 1, 2, 3, 4, 5, 6 }), ListNode.GenerateNode(new[] { 4, 5, 6 }));
     }
-
-    private static ListNode GenerateNode(int[] values)
-    {
-        var head = new ListNode(values[0]);
-
-        for (int i = 1; i < values.Length; i++)
-        {
-            var lastNode = FindLast(head);
-            lastNode.next = new ListNode(values[i]);
-        }
-
-        return head;
-    }
-
-    private static ListNode FindLast(ListNode node)
-        => node.next == null ? node : FindLast(node.next);
 }

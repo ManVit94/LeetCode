@@ -5,22 +5,29 @@ public class ListNode
     public int val;
     public ListNode next;
 
-    public ListNode(int val = 0, ListNode next = null)
+    private ListNode(int val = 0, ListNode next = null)
     {
         this.val = val;
         this.next = next;
     }
-    
+
     public override bool Equals(object obj)
     {
-        // Check for null and compare run-time types.
-        if (obj == null || !this.GetType().Equals(obj.GetType()))
+        try
+        {
+            // Check for null and compare run-time types.
+            if (obj == null || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+
+            ListNode node = (ListNode)obj;
+            return (val == node.val) && (next == null && node.next == null || next.Equals(node.next));
+        }
+        catch (Exception)
         {
             return false;
         }
-        
-        ListNode node = (ListNode)obj;
-        return (val == node.val) && (next == null && node.next == null || next.Equals(node.next));
     }
 
     public override int GetHashCode()
@@ -31,4 +38,20 @@ public class ListNode
         hash = hash * 31 + (next?.GetHashCode() ?? 0);
         return hash;
     }
+
+    public static ListNode GenerateNode(int[] values)
+    {
+        var head = new ListNode(values[0]);
+
+        for (int i = 1; i < values.Length; i++)
+        {
+            var lastNode = FindLast(head);
+            lastNode.next = new ListNode(values[i]);
+        }
+
+        return head;
+    }
+
+    private static ListNode FindLast(ListNode node)
+        => node.next == null ? node : FindLast(node.next);
 }
