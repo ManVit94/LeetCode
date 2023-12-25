@@ -1,4 +1,4 @@
-namespace LeetCode.Easy;
+namespace LeetCode.Easy.FirstD;
 
 public class FizzBuzz
 {

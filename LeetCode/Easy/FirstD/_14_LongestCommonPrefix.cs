@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace LeetCode.Easy;
+namespace LeetCode.Easy.FirstD;
 
 public class LongestCommonPrefix
 {

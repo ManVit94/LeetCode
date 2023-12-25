@@ -1,6 +1,6 @@
 using LeetCode.Common;
 
-namespace LeetCode.Easy;
+namespace LeetCode.Easy.SecondD;
 
 public class MiddleOfTheLinkedList
 {
